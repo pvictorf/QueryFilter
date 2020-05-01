@@ -5,6 +5,7 @@ Class para ajudar a colocar filtros em suas Querys
 
 //Os filtros serão aplicados somente para váriaveis que tiverem valor definido.
 
+```php
 <?php
 require_once 'QueryFilter.php';
 
@@ -27,7 +28,7 @@ $query = $qf->where(':nome', 'Like', $nome)
 foreach($qf->getBinds() as $bind) {
    echo "bind: {$bind->column} value: {$bind->value}";
 }
-
+```
 
 
 
