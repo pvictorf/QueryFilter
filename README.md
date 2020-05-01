@@ -18,16 +18,24 @@ $query = "SELECT * from usuarios
 $qf = new QueryFilter($query, 'usuarios'); 
 
 //Aplica os filtros a query, caso haja valor na váriavel
-$query = $qf->where(':nome', 'Like', $nome)
-            ->where(':email', 'Like', $email)
+$query = $qf->where(':nome', 'like', "%{$nome}%")
+            ->where(':email', 'like', "%{$email}%")
             ->where(':id', '=', $id)
             ->orderBy('nome')
             ->getQuery();
 
 //Retorna os binds para uso do PDO
 foreach($qf->getBinds() as $bind) {
-   echo "bind: {$bind->column} value: {$bind->value}";
+   echo "\n bind: {$bind->column} value: {$bind->value}";
 }
+```
+
+Como somente "nome" tem valor definido a query será:
+
+```sql
+SELECT * from usuarios
+          inner join perfil on perfil.id = usuarios.id_perfil 
+          where usuarios.id is not null AND :nome like %Paulo% order by nome ASC 
 ```
 
 
