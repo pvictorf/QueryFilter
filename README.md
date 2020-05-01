@@ -15,7 +15,7 @@ $query = "SELECT * from usuarios
           inner join perfil on perfil.id = usuarios.id_perfil";
           
 //Define a query que terá filtros aplicados e qual a tabela principal.          
-$qf = new QueryFilter($query, 'usuarios'); 
+$qf = new QueryFilter($query, 'usuarios', 'id'); 
 
 //Aplica os filtros a query, caso haja valor na váriavel
 $query = $qf->where(':nome', 'like', "%{$nome}%")
