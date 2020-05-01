@@ -39,7 +39,7 @@ class QueryFilter {
     * @return self
     */
    public function where($column, $operator, $value, $logic = 'AND') {
-      $value = trim($value);
+      $value = preg_replace("/%%/", '', trim($value));
 
       if(isset($value) && !empty($value)) {
 
