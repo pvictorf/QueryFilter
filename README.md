@@ -3,7 +3,7 @@ Class para ajudar a colocar filtros em suas Querys
 
 # Como usar
 
-//Os filtros serão aplicados somente para váriaveis que tiverem valor definido.
+Os filtros serão aplicados somente para váriaveis que tiverem valor definido.
 
 ```php
 <?php
