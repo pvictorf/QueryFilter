@@ -104,8 +104,8 @@ class QueryFilter {
     * @param  String $order
     * @return self
     */
-   public function orderBy($column, $order = 'ASC') {
-      $this->query .= " order by $column $order";
+   public function orderBy($columns) {
+      $this->query .= " order by $columns ";
       return $this;
    }
 
