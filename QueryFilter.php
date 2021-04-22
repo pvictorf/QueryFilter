@@ -12,7 +12,7 @@ class QueryFilter {
     * @param  String $primary_key
     * @return void
     */
-   public function __construct($query, $table, $primary_key = 'id') {
+   public function __construct($query, $table) {
       $this->query  = $query;
       $this->binds  = [];
    }
