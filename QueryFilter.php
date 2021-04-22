@@ -14,7 +14,6 @@ class QueryFilter {
     */
    public function __construct($query, $table, $primary_key = 'id') {
       $this->query  = $query;
-      $this->query .= " where {$table}.{$primary_key} is not null ";
       $this->binds  = [];
    }
    
@@ -42,8 +41,14 @@ class QueryFilter {
       $value = preg_replace("/%%/", '', trim($value));
 
       if(isset($value) && !empty($value)) {
-
-         $this->query .= $logic . " $column $operator $value ";
+         
+         $hasWhere = strpos(strtoupper($this->query), 'WHERE'); 
+         if($hasWhere) {
+             $this->query .= " $logic $column $operator $value ";
+         } else {
+             $this->query .= " WHERE $logic $column $operator $value ";
+         }
+        
 
          $this->bind($column, $value);
 
