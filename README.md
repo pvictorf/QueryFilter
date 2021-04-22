@@ -22,7 +22,7 @@ $qf = new QueryFilter(
 $query = $qf->where(':nome', 'like', "%{$nome}%")
             ->where(':email', 'like', "%{$email}%")
             ->where(':id', '=', $id)
-            ->orderBy('nome')
+            ->orderBy('nome ASC')
             ->getQuery();
 
 //Retorna os binds para uso do PDO
