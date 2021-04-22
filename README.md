@@ -15,8 +15,7 @@ $nome = "Paulo";
 $qf = new QueryFilter(
           "SELECT * from usuarios
           inner join perfil on perfil.id = usuarios.id_perfil ",
-          'usuarios', 
-          'id'
+          'usuarios'
 ); 
 
 //Aplica os filtros a query, caso haja valor na váriavel
@@ -37,7 +36,7 @@ Como somente "nome" tem valor definido a query será:
 ```sql
 SELECT * from usuarios
           inner join perfil on perfil.id = usuarios.id_perfil 
-          where usuarios.id is not null AND :nome like %Paulo% order by nome ASC 
+          where :nome like %Paulo% order by nome ASC 
 ```
 
 
